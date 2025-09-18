@@ -22,10 +22,12 @@ public class Todo {
 
     private String taskName;
     private Category category;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime dueDate;
-    private LocalDateTime createdDate;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+//    private LocalDateTime dueDate;
+//    private LocalDateTime createdDate;
     private boolean isCompleted;
+
+    private String userId;
 
 
 }

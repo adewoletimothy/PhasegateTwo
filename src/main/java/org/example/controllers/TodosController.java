@@ -3,6 +3,8 @@ package org.example.controllers;
 
 
 import org.example.data.models.Todo;
+import org.example.dto.requests.TodoRequest;
+import org.example.dto.responses.TodoResponse;
 import org.example.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +24,12 @@ public class TodosController {
         this.todoService = todoService;
     }
 
-    @PostMapping("/todo")
-    public ResponseEntity<Todo> addTodo(@RequestBody Todo todo){
-        Todo savedTodo = todoService.addTodo(todo);
+    @PostMapping(path="/todo/{userId}")
+    public ResponseEntity<TodoResponse> addTodo(@RequestBody TodoRequest request, @PathVariable("userId") String userId){
+        TodoResponse savedTodo = todoService.addTodo(request, userId);
         return ResponseEntity.ok(savedTodo);
     }
+
     @GetMapping("/todos")
     public List<Todo> getAllTodos(){
         return todoService.getAllTodo();
